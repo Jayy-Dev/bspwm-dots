@@ -25,6 +25,7 @@
 + just give permissions to scripts if haven't
 + nitrogen
 + dunst (use your config)
+# SYSLINK the script folder from the eww to inside the popup folder
 
 # Notes
 + Change the keybinds to your usage
