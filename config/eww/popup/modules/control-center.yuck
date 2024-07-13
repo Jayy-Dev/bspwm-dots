@@ -27,7 +27,7 @@
       )
     )
     ;; Bluetooth
-    (button :onclick "$HOME/.config/eww/scripts/qs-script.sh --toggle-bluetooth" :class "active"
+    (button :onclick "$HOME/.config/eww/scripts/qs-script.sh --toggle-bluetooth" :class "${bluetooth-state}"
       (box :orientation "h" :space-evenly false :halign "start"
         (label :class "qs-icon" :text " 󰂯 ")
       
