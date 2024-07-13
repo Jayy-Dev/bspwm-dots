@@ -29,4 +29,5 @@
 # Notes
 + Change the keybinds to your usage
 + Music Widgets doesn't recognize other players [Spotify works]
++ Messy codes? YES
 + Drop a star maybe?
