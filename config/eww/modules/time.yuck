@@ -1,0 +1,14 @@
+(defwidget widget_clock []
+    (box :halign "center" :valign "center" :hexpand false :space-evenly false :spacing 10 :tooltip "${DOW} ${MONTH} ${DAY}"
+      ;; (label :class "clock_icon" :text " ")
+      ;; (label :class "clock_time" :text "${DOW} ${MONTH} ${DAY} ${TIME}")
+      (label :class "clock_time" :text "${TIME} ${MER}")
+    ) 
+)
+
+(defpoll TIME   :interval "30s"  "date +'%I:%M'")
+(defpoll MER    :interval "1m" "date +'%p'")  ;; AM or PM
+(defpoll DOW    :interval "1m" "date +'%a'")  ;; Day of week
+; (defpoll MONTH  :interval "1m"  "date +'%m'")  ;; Like a 03 08
+(defpoll MONTH  :interval "1m"  "date +'%b'")  ;; Lhike a MAR, Aug,,,
+(defpoll DAY    :interval "1m"  "date +'%d'")

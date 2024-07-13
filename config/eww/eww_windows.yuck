@@ -1,0 +1,88 @@
+(include "./modules/music.yuck")
+(include "./modules/x11workspaces.yuck")
+(include "./modules/time.yuck")
+(include "./modules/system.yuck")
+(include "./modules/power.yuck")
+(include "./modules/systray.yuck")
+
+(defwindow music
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :windowtype "dock"
+  :geometry (geometry :x "20.5%"
+                      :y "0.5%"
+                      :width "22%"
+                      :height "5%"
+                      :anchor "top left"
+            )
+  (widget_music)
+)
+
+(defwindow workspace
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :windowtype "dock"
+  :geometry (geometry :x "1%"
+                      :y "0.5%"
+                      :width "10%"
+                      :height "5%"
+                      :anchor "top left"
+            )
+  (widget_workspace)
+)
+
+(defwindow sysinfo
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :windowtype "dock"
+  :geometry (geometry :x "11%"
+                      :y "0.5%"
+                      :width "36%"
+                      :height "5%"
+                      :anchor "top center"
+            )
+  (widget_sysinfo)
+)
+
+(defwindow clock
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :windowtype "dock"
+  :geometry (geometry :x "-3.5%"
+                      :y "0.5%"
+                      :width "6%"
+                      :height "5%"
+                      :anchor "top right"
+            )
+  (widget_clock)
+)
+
+(defwindow power
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :windowtype "dock"
+  :geometry (geometry :x "-0.3%"
+                      :y "0.5%"
+                      :width "3%"
+                      :height "5%"
+                      :anchor "top right"
+            )
+  (widget_power)
+)
+
+(defwindow systray
+  :monitor 0
+  :stacking "fg"
+  :wm-ignore true
+  :geometry (geometry :x "-10.05%"
+                      :y "0.5%"
+                      :width "10.5%"
+                      :height "5%"
+                      :anchor "top right")
+  (widget_systray)
+)

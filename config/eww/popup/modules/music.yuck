@@ -1,0 +1,63 @@
+(defwidget music []
+  (eventbox :onhoverlost "$HOME/.config/eww/popup/launch.sh --toggle-music"
+		(box :class "popupbox"
+			(box :orientation "h" :spacing 0 :valign "center" :halign "start" :space-evenly "false" :vexpand "false" :hexpand "false"
+				  ;;Music Cover
+          (revealer :reveal "${MUSIC_PLAYING}" :transition "crossfade"
+            (box :class "music_art" 
+                   :halign "center" :valign "center" :space-evenly false 
+                   :css " .music_art {
+                            background-image:     url('${MUSIC_ART}');
+                            background-repeat:    no-repeat;
+                            background-size:      cover;
+                            background-position:  center center;
+                            min-width:            50px;
+                            min-height:           50px; 
+                          
+                            border-radius:        10px;
+                            margin:               8px;
+                          } 
+                        "
+            )
+          )
+				(box :class "musicbox" :orientation "v" :spacing 0 :valign "center" :halign "start" :space-evenly "false" :vexpand "false" :hexpand "false"
+					(label :class "song" :halign "start" :wrap "false" :limit-width 20 :text "${MUSIC_TITLE}")
+					(label :class "artist" :halign "start" :wrap "false" :limit-width 20 :text "${MUSIC_ARTIST}")
+        )
+      )
+			(box :class "musicbuttons" :orientation "h" :spacing 10 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
+				;; Previous button 
+        (eventbox :class "sys_button_square" :width 40 :height 40
+                  :onclick "scripts/music.sh --prev"
+          (label :class "music_prev_icon" :text "󰒮")
+        )
+        
+        ;; Button that toggle play and pause
+        (eventbox :class "sys_button_square" :width 40 :height 40
+                  :onclick "scripts/music.sh --toggle"
+          (box :class "music_toggle_icon" {MUSIC_PLAYING == "true" ? "󰏤" : "󰐊"})
+        )
+        
+        ;; Next button
+        (eventbox :class "sys_button_square" :width 40 :height 40
+                  :onclick "scripts/music.sh --next"
+          (label :class "music_next_icon" :text "󰒭")
+        )  
+
+      )
+    )
+  )
+)
+
+
+
+
+
+
+
+
+
+
+
+
+

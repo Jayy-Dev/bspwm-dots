@@ -1,0 +1,78 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+  font-family: "Metropolis";
+  font-weight: bold;
+}
+
+@import './../../.cache/wal/colors.scss'
+
+.music,
+.workspace,
+.sysinfo,
+.systray,
+.power,
+.clock, 
+{
+  background-color: $background;
+  border-radius: 10px;
+}
+
+tooltip {
+  color: $color5;
+  background-color: $background;
+}
+
+// Styles on classes (see eww.yuck for more information)
+.music_title, 
+.music_artist
+{
+//	color:				$foreground;
+	font-size:			0.95rem;
+	font-weight:		bold;
+  border-radius: 10px;
+}
+
+.workspace {
+  padding: 0px 12px 0px 12px;
+  transition: ease 0.5s;
+}
+
+.workspace_active {
+    color:  $background;
+    background-color: $color1;
+    border-radius: 5px;
+    padding: 0px 2px 0px 2px;
+    transition: ease-in 0.5s;
+}
+
+.workspace_inactive {
+//    color:  $foreground;
+    transition: ease-out 0.5s;
+}
+
+.workspace_occupied {
+    color:  $color1;
+}
+
+.clock_icon {
+	color:				$color1;
+}
+.clock_time {
+//	color:				$foreground;
+	font-weight:		bold;
+}
+
+// System
+
+.sysinfo {
+  padding: 0px 2px 0px 5px;
+}
+
+.network_icon,
+.bluetooth_icon,
+.volume_icon,
+.brightness_icon,
+.battery_icon,
+.powerbtn {
+  color: $color1;
+}

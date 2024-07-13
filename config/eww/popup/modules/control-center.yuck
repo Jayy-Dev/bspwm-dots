@@ -1,0 +1,153 @@
+(defwidget control-center []
+(eventbox :onhoverlost "$HOME/.config/eww/popup/launch.sh --toggle-dashboard"
+  (box :orientation "v" :space-evenly false :spacing 20
+  (qs-buttons)
+  (volum)
+  (mic)
+  (bright)
+  )
+)
+)
+
+(defwidget qs-buttons []
+  (box :class "qs-buttons" :orientation "h" :space-evenly true :spacing 20
+     ;; Network
+    (button :onclick "$HOME/.config/eww/scripts/qs-script.sh --toggle-wifi" :class "${network-state}"
+      (box :orientation "h" :space-evenly false :halign "start"
+        (label :class "qs-icon" :text "  ")
+      
+        (box :orientation "v" :class "qs-info" :space-evenly false :halign "end" :valign "center"
+          (box :orientation "h" :space-evenly false :halign "start"
+            (label :class "qs-text" :limit-width "12" :text "${NETWORK}")
+          )
+          (box :orientation "h" :space-evenly false :halign "start"
+            (label :class "qs-state" :text "${network-state}")
+          )
+        )
+      )
+    )
+    ;; Bluetooth
+    (button :onclick "$HOME/.config/eww/scripts/qs-script.sh --toggle-bluetooth" :class "active"
+      (box :orientation "h" :space-evenly false :halign "start"
+        (label :class "qs-icon" :text " 󰂯 ")
+      
+        (box :orientation "v" :class "qs-info" :space-evenly false :halign "end" :valign "center"
+          (box :orientation "h" :space-evenly false :halign "start"
+            (label :class "qs-text" :limit-width "12" :text "${BLUETOOTH}")
+          )
+          (box :orientation "h" :space-evenly false :halign "start"
+            (label :class "${bluetooth-state}" :text "${bluetooth-state}")
+          )
+        )
+      )
+    )
+    ;;Mic
+    (button :onclick "$HOME/.config/eww/scripts/qs-script.sh --toggle-mic" :class "${mic-state}"
+      (box :orientation "h" :space-evenly false :halign "start"
+        (label :class "qs-icon" :text " 󰍬 ")
+      
+        (box :orientation "v" :class "qs-info" :space-evenly false :halign "end" :valign "center"
+          (box :orientation "h" :space-evenly false :halign "start"
+            (label :class "qs-text" :text "Mic")
+          )
+          (box :orientation "h" :space-evenly false :halign "start"
+            (label :class "qs-state" :text "${mic-state}")
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget volum []
+  (box  :orientation "h" 	  
+			  :space-evenly "false" 
+			  :spacing "0" 
+
+    (box :orientation "v" :halign "start"
+       (label :class "volume-icon" :text "󰕾")
+      ) 
+    
+    (box :orientation "h" :halign "start"
+        (scale  :class "volbar" 	  
+			          :value current-volume 
+			          :orientation "h"      
+			          :flipped false 
+			          :tooltip "Volume: ${current-volume}%" 
+			          :max 101 
+			          :min 0 
+			          :onchange "amixer -D pulse sset Master {}%" ))
+  )
+)
+;; Microphone Widgets
+(defwidget mic []
+  (box  :orientation "h" 	  
+			  :space-evenly "false" 
+			  :spacing "0" 
+
+    (box :orientation "v" :halign "start"
+       (label :class "volume-icon" :text "󰍬")
+      ) 
+    
+    (box :orientation "h" :halign "start"
+        (scale  :class "volbar" 	  
+			          :value current-mic-volume 
+			          :orientation "h"      
+			          :flipped false 
+			          :tooltip "Volume: ${current-mic-volume}%" 
+			          :max 101 
+			          :min 0 
+			          :onchange "amixer -D pulse sset Capture {}%" ))
+  )
+)
+
+
+;; Brightness Widgets ;;
+(defwidget bright []
+  	(box  :orientation "h"  
+			  	:space-evenly "false"  
+					:spacing "0"
+
+      (box :orientation "v" :halign "start"
+         (label :class "brightness-icon" :text "󰃠")
+      )
+
+      (box :orientation "h" :halign "start"
+  			(scale :class "bribar" 
+			  	 :value BRIGHTNESS 
+				   :tooltip "Brightness: ${BRIGHTNESS}%" 
+				   :onchange "brightnessctl set {}%" 
+				   :orientation "h" 
+				   :flipped false 
+				   :max 101 
+				   :min 0
+        )
+      ) 
+    )	
+)
+
+(defwidget idk []
+  (box :orientation "h" :space-evenly "false" :spacing "0"
+    (box :orientation "v" :halign "start"
+        (label :class "brightness-icon" :text "If it works, don't touch it")
+      )
+    )
+)
+
+
+(defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll current-mic-volume :interval "1s" "amixer -D pulse sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defvar volum false)
+
+;; Another messy polls
+(defpoll network-state :interval "1s"
+  "scripts/qs-script.sh --check_wifi"
+  )
+
+(defpoll bluetooth-state :interval "1s"
+  "scripts/qs-script.sh --check_bluetooth"
+  )
+
+(defpoll mic-state :interval "1s"
+  "scripts/qs-script.sh --check_mic"
+  )

@@ -1,0 +1,7 @@
+(defwidget widget_power []
+  (eventbox :class "powerbtn" 
+            :onclick "$HOME/.config/eww/popup/launch.sh --toggle-powermenu" 
+            "⏻ "
+  )
+)
+

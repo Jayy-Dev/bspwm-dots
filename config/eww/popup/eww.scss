@@ -1,0 +1,131 @@
+@import './../../../.cache/wal/colors.scss'
+
+* {
+   all: unset;
+   font-family: "Metropolis";
+   font-weight: bold;
+   border-radius: 10px;
+}
+
+//////////// Global Settings
+.powermenu,
+.control-center,
+.music,
+.popupbox {
+  background-color: $background;
+}
+
+//////////// Powermenu
+
+.shutdown,
+.reboot,
+.hibernate,
+.lock,
+.logout {
+  background-color: $color1;
+  padding: 10px 5px 10px 5px;
+  margin: 5px 8px 8px 8px;
+}
+
+.powermenu button:hover {
+  background-color: $foreground;
+  color: $background;
+  transition: ease 0.5s;
+}
+
+//////////// Quick Settings
+
+.qs-buttons {
+  margin: 10px;
+}
+
+.active {
+  background-color: $color1;
+}
+
+.inactive {
+  background-color: $color2;
+}
+
+.qs-icon {
+  margin: 8px;
+}
+
+.qs-info {
+  margin: 8px;
+}
+
+.On {
+  background-color: $color1; 
+}
+
+.Off {
+  background-color: $color2;
+  transition: ease all 350ms;
+}
+
+/** Music *************************************************/
+.music_prev_icon,
+.music_toggle_icon,
+.music_next_icon,
+{
+//	color:				$foreground;
+	font-size: 16px;
+}
+
+.music_art {
+  border: 2px solid $color1;
+}
+
+.musicbox {
+	margin : 0px 0px 0px 5px;
+}
+
+.song {
+	font-size : 14px;
+	font-weight : bold;
+}
+
+.artist {
+	font-size : 12px;
+	font-weight : bold;
+}
+
+.musicbuttons {
+	margin : 0px 0px 0px -90px;
+}
+
+// Experiment
+$black: #24283B;
+$gray: #565F89;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+
+.brightness-icon{
+  margin: 8px;
+//  color: $color3;
+}
+.volume-icon{
+//  color: $color3;
+  margin: 8px;
+}
+scale trough {
+  all: unset;
+  background-color: $gray;
+  border-radius: 5px;
+  min-height: 20px;
+  min-width: 530px;
+  margin: 8px;
+}
+.bribar trough highlight {
+  background-color: $color1;
+  border-radius: 5px;
+}
+.volbar trough highlight {
+  background-color: $color1;
+  border-radius: 5px;
+}

@@ -1,0 +1,46 @@
+(include "./modules/powermenu.yuck")
+(include "./modules/control-center.yuck")
+(include "./modules/music.yuck")
+
+(defwindow powermenu
+  :monitor 0
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore true
+  :geometry (geometry :x "-0.3%"
+                      :y "6%"
+                      :width "5%"
+                      :height "30%"
+                      :anchor "top right"
+            )
+  (powermenu)
+)
+
+(defwindow control-center 
+  :monitor 0
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore true
+  :geometry (geometry :x "11%"
+                      :y "6%"
+                      :width "36%"
+                      :height "27%"
+                      :anchor "top center"
+            )
+  (control-center)
+)
+
+;; music
+(defwindow music
+           :monitor 0
+           :geometry (geometry :x "20.5%"
+                               :y "6%"
+                               :width "22%"
+                               :height "80px"
+                               :anchor "top left")
+           :stacking "fg"
+           :windowtype "dock"
+           :wm-ignore true
+(music))
+
+

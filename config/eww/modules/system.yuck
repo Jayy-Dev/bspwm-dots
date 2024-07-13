@@ -1,0 +1,51 @@
+(defwidget widget_sysinfo []
+(eventbox :onclick "$HOME/.config/eww/popup/launch.sh --toggle-dashboard"
+  (box :orientation "h" :halign "center" :space-evenly false :hexpand false :spacing 15
+
+    ;; Network 
+    (box :halign "center" :valign "center" :space-evenly false
+    (label :class "network_icon" :text "  ")
+    (label :class "bluetooth_name" :limit-width "12" :text "${NETWORK}")
+    )
+
+    ;;Bluetooth
+    (box :halign "center" :valign "center" :space-evenly false
+    (label :class "network_icon" :text "󰂯 ")
+    (label :class "bluetooth_name" :limit-width "12" :text "${BLUETOOTH}")
+    )
+
+    ;; Volume
+    (box :halign "center" :valign "center" :space-evenly false
+    (label :class "volume_icon" :text "  ")
+    (label :class "volume_label" :text "${VOLUME}")
+    )
+
+     ;;Brightness
+    (box :halign "center" :valign "center" :space-evenly false
+    (label :class "brightness_icon" :text "󰃠  ")
+    (label :class "brightness_level" :text "${BRIGHTNESS}%")
+    )
+  
+     ;;Battery
+    (box :halign "center" :valign "center" :space-evenly false
+    (label :class "battery_icon" :text "  ")
+    (label :class "battery_percentage" :text "${BATTERY}%")
+    )
+  )
+  )
+)
+
+(defpoll NETWORK :interval "2s"
+  "scripts/system_info.sh --get_ssid")
+
+(defpoll BLUETOOTH :interval "2s"
+  "scripts/system_info.sh --get_bluetooth")
+
+(defpoll VOLUME :interval "1s"
+  "scripts/system_info.sh --get_volume")
+
+(defpoll BRIGHTNESS :interval "2s"
+  "scripts/system_info.sh --get_brightness")
+
+(defpoll BATTERY :interval "2s"
+  "scripts/system_info.sh --get_battery")

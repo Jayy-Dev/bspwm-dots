@@ -1,0 +1,5 @@
+(defwidget widget_systray []
+  (box :orientation "h" :halign "center" :hexpand false
+    (systray :class "tray" :orientation "h" :icon-size "14" :prepend-new true :spacing 5)
+  )
+)

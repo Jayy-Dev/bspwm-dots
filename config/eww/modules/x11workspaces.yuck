@@ -1,0 +1,9 @@
+(defwidget widget_workspace []
+  (box :halign "center" :valign "center" :hexpand false
+    (literal :content WORKSPACES_YUCK)
+  ) 
+)
+
+;; Workspaces
+(defpoll WORKSPACES_YUCK :interval "0.5s"
+  "scripts/workspaces.sh --workspaces_yuck")
